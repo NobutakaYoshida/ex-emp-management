@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.sample.domain.Administrator;
 import jp.co.sample.form.InsertAdministratorForm;
+import jp.co.sample.form.LoginForm;
 import jp.co.sample.service.AdministratorService;
 
 @Controller
@@ -48,5 +49,23 @@ public class AdministertorController {
 		BeanUtils.copyProperties(form, administrator);
 		administratorService.insert(administrator);
 		return "redirect:/";
+	}
+	
+	/**
+	 * LoginFormをインスタンス化しそのままreturnする処理を記述
+	 * ※ログインする際のリクエストパラメータが格納されるLoginFormオブジェクト（リクエストスコープ）に自動的に格納される
+	 */
+	@ModelAttribute
+	public LoginForm setUpLoginForm() {
+		return new LoginForm();
+	}
+	
+	
+	/**
+	 * administrator/login.htmlにフォワードする処理
+	 */
+	@RequestMapping("/")
+	public String toLogin() {
+		return "administrator/login";
 	}
 }

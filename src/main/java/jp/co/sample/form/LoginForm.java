@@ -1,6 +1,6 @@
 package jp.co.sample.form;
 
-public class loginForm {
+public class LoginForm {
 	
 	// メールアドレス
 	public String mailAddress;
